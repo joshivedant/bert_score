@@ -33,6 +33,7 @@ lang2model.update(
         "zh": "bert-base-chinese",
         "tr": "dbmdz/bert-base-turkish-cased",
         "en-sci": "allenai/scibert_scivocab_uncased",
+        "hi": "ai4bharat/indic-bert",
     }
 )
 
@@ -182,6 +183,7 @@ model2layers = {
     "microsoft/mdeberta-v3-base": 10,  # 0.6778713684091584
     "microsoft/deberta-v3-large": 12,  # 0.6927693082293821
     "khalidalt/DeBERTa-v3-large-mnli": 18,  # 0.7428756686018376
+    "ai4bharat/indic-bert": 12 #not finetuned
 }
 
 
@@ -325,7 +327,9 @@ def get_tokenizer(model_type, use_fast=False):
     if model_type.startswith("scibert"):
         model_type = cache_scibert(model_type)
 
-    if version.parse(trans_version) >= version.parse("4.0.0"):
+    if model_type.startswith("ai4bharat"):
+        tokenizer = AutoTokenizer.from_pretrained(model_type, use_fast=use_fast, keep_accents=True)
+    elif version.parse(trans_version) >= version.parse("4.0.0"):
         tokenizer = AutoTokenizer.from_pretrained(model_type, use_fast=use_fast)
     else:
         assert not use_fast, "Fast tokenizer is not available for version < 4.0.0"
