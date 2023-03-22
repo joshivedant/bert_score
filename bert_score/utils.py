@@ -33,6 +33,7 @@ lang2model.update(
         "zh": "bert-base-chinese",
         "tr": "dbmdz/bert-base-turkish-cased",
         "en-sci": "allenai/scibert_scivocab_uncased",
+        "indic": "ai4bharat/indic-bert",
         "hi": "ai4bharat/indic-bert",
     }
 )
@@ -183,7 +184,7 @@ model2layers = {
     "microsoft/mdeberta-v3-base": 10,  # 0.6778713684091584
     "microsoft/deberta-v3-large": 12,  # 0.6927693082293821
     "khalidalt/DeBERTa-v3-large-mnli": 18,  # 0.7428756686018376
-    "ai4bharat/indic-bert": 12 #not finetuned
+    "ai4bharat/indic-bert": 12 #not fine-tuned
 }
 
 
